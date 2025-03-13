@@ -1,5 +1,3 @@
-console.log("Script loaded successfully!");
-
 const $modal = $(".c-testimonials_modal");
 const $video = $modal.find("iframe");
 $("body").append($modal);
