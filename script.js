@@ -1,3 +1,5 @@
+console.log("sent to staging!");
+
 const $modal = $(".c-testimonials_modal");
 const $video = $modal.find("iframe");
 $("body").append($modal);
