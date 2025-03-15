@@ -1,5 +1,24 @@
-console.log("sent to staging!");
+//
+if (window.innerWidth > 991) {
+  gsap.utils.toArray("[container]").forEach((el) => {
+    gsap.fromTo(
+      el,
+      { paddingBottom: "20em" }, // Initial padding-bottom
+      {
+        paddingBottom: "0em", // Final padding-bottom
+        ease: "power2.In",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom", // Starts when the top of [container] is at the bottom of the screen
+          end: "bottom top", // Ends when the top reaches the top of the screen
+          scrub: 1,
+        },
+      }
+    );
+  });
+}
 
+// Video Slider
 const $modal = $(".c-testimonials_modal");
 const $video = $modal.find("iframe");
 $("body").append($modal);
@@ -147,4 +166,110 @@ $(".slider").each(function () {
 
   // Apply custom pagination using the current slider's context
   initializeCustomPagination(centerSlider, sliderClass, $thisSlider);
+});
+
+
+// Revolover
+
+// Global handler to suppress AbortError rejections.
+window.addEventListener("unhandledrejection", function(e) {
+  if (e.reason && e.reason.name === "AbortError") {
+    e.preventDefault();
+  }
+});
+
+// Make sure GSAP and the Flip plugin are loaded beforehand.
+const container = document.querySelector('.revolver_gsap');
+const intervalTime = 2500;
+let timer; // Reference for the interval
+
+// Sort items based on the data-index attribute (assumed numeric)
+function getSortedItems() {
+  return Array.from(container.children).sort((a, b) =>
+    parseInt(a.dataset.index, 10) - parseInt(b.dataset.index, 10)
+  );
+}
+
+// Update the classes of each item based on the current center index.
+function updateItems() {
+  const sortedItems = getSortedItems();
+  const total = sortedItems.length;
+
+  // Capture current state for FLIP animation.
+  const state = Flip.getState('.revolver-wrap');
+
+  sortedItems.forEach((item, i) => {
+    let diff = i - currentCenterIndex;
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+
+    if (diff === 0) {
+      item.className = 'revolver-wrap cc-center';
+    } else if (diff === 1) {
+      item.className = 'revolver-wrap cc-next-1';
+    } else if (diff === 2) {
+      item.className = 'revolver-wrap cc-next-2';
+    } else if (diff === -1) {
+      item.className = 'revolver-wrap cc-prev-1';
+    } else if (diff === -2) {
+      item.className = 'revolver-wrap cc-prev-2';
+    } else if (diff > 2) {
+      item.className = 'revolver-wrap cc-next-3';
+    } else if (diff < -2) {
+      item.className = 'revolver-wrap cc-prev-3';
+    }
+  });
+
+  // Only animate if the document is visible.
+  if (!document.hidden) {
+    const anim = Flip.from(state, {
+      duration: 0.75,
+      ease: 'power2.inOut'
+    });
+    if (anim && typeof anim.catch === 'function') {
+      anim.catch(err => {
+        if (err.name === 'AbortError') return;
+        console.error(err);
+      });
+    }
+  }
+}
+
+// Determine the initial center index: look for an item with "cc-center", default to 0.
+let currentCenterIndex = getSortedItems().findIndex(item =>
+  item.classList.contains('cc-center')
+);
+if (currentCenterIndex < 0) currentCenterIndex = 0;
+
+// Function to cycle the center pointer in reverse.
+function cycleItems() {
+  const sortedItems = getSortedItems();
+  currentCenterIndex = (currentCenterIndex - 1 + sortedItems.length) % sortedItems.length;
+  updateItems();
+}
+
+// Timer control functions.
+function startTimer() {
+  if (!timer) {
+    timer = setInterval(cycleItems, intervalTime);
+  }
+}
+
+function stopTimer() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+}
+
+// Start the timer.
+startTimer();
+
+// Pause/resume the timer based on tab visibility.
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopTimer();
+  } else {
+    startTimer();
+  }
 });
