@@ -1,4 +1,6 @@
-//
+
+if(document.querySelector('[container]')) {
+
 if (window.innerWidth > 991) {
   gsap.utils.toArray("[container]").forEach((el) => {
     gsap.fromTo(
@@ -17,8 +19,11 @@ if (window.innerWidth > 991) {
     );
   });
 }
+}
 
 // Video Slider
+if(document.querySelector('.c-testimonials_modal')) {
+
 const $modal = $(".c-testimonials_modal");
 const $video = $modal.find("iframe");
 $("body").append($modal);
@@ -127,6 +132,7 @@ $(".slider").each(function () {
       0: {
         simulateTouch: true,
         slidesPerView: 1, // For screens below 991px
+        effect: "slide",
       },
     },
     on: {
@@ -167,9 +173,11 @@ $(".slider").each(function () {
   // Apply custom pagination using the current slider's context
   initializeCustomPagination(centerSlider, sliderClass, $thisSlider);
 });
-
+}
 
 // Revolover
+
+if(document.querySelector('.revolver_gsap')) {
 
 // Global handler to suppress AbortError rejections.
 window.addEventListener("unhandledrejection", function(e) {
@@ -273,3 +281,4 @@ document.addEventListener('visibilitychange', () => {
     startTimer();
   }
 });
+}
