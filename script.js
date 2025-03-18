@@ -132,7 +132,6 @@ $(".slider").each(function () {
       0: {
         simulateTouch: true,
         slidesPerView: 1, // For screens below 991px
-        effect: "slide",
       },
     },
     on: {
