@@ -101,11 +101,6 @@ if (document.querySelector(".c-testimonials_modal")) {
 
     // Initialize Swiper on the localized slider element
     const centerSlider = new Swiper($thisSlider.find(sliderSelector)[0], {
-      effect: "coverflow",
-      coverflowEffect: {
-        rotate: 0,
-        slideShadows: false,
-      },
       autoplay: {
         delay: 5000,
       },
