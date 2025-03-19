@@ -106,9 +106,7 @@ if (document.querySelector(".c-testimonials_modal")) {
         rotate: 0,
         slideShadows: false,
       },
-      autoplay: {
-        delay: 5000,
-      },
+
       simulateTouch: false,
       loop: true,
       spaceBetween: 32,
