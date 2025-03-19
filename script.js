@@ -300,8 +300,8 @@ if (window.innerWidth > 991) {
         trigger: ".joy-of-work",
         start: "top center",
         end: "bottom top",
-        scrub: 1.5
-        markers:true,
+        scrub: 1.5,
+        markers: true,
       },
     })
     .fromTo(".joy_img", { y: "0em" }, { y: "-18em", ease: "none" })
