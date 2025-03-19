@@ -281,7 +281,7 @@ if (window.innerWidth > 991) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".joy_words",
-      start: "top 80%", // Starts animation when element is 80% from top of viewport
+      start: "top 70%", // Starts animation when element is 80% from top of viewport
       toggleActions: "play none none none", // Play animation once when scrolled into view
     },
   });
