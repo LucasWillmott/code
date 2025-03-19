@@ -240,10 +240,10 @@ if (document.querySelector(".revolver_gsap")) {
   let currentCenterIndex = getSortedItems().findIndex((item) => item.classList.contains("cc-center"));
   if (currentCenterIndex < 0) currentCenterIndex = 0;
 
-  // Function to cycle the center pointer in reverse.
+  // Function to cycle the center pointer in forward direction.
   function cycleItems() {
     const sortedItems = getSortedItems();
-    currentCenterIndex = (currentCenterIndex - 1 + sortedItems.length) % sortedItems.length;
+    currentCenterIndex = (currentCenterIndex + 1) % sortedItems.length;
     updateItems();
   }
 
@@ -288,10 +288,10 @@ if (window.innerWidth > 991) {
 
   // Animate each element in sequence
   tl.fromTo("[for]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" })
-    .fromTo("[the]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.8")
-    .fromTo("[joy]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.8")
-    .fromTo("[of]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.8")
-    .fromTo("[work]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.8");
+    .fromTo("[the]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.95")
+    .fromTo("[joy]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.95")
+    .fromTo("[of]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.95")
+    .fromTo("[work]", { y: "300%", opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.inOut" }, "-=0.95");
 
   // Create a timeline for the joy image movement
   gsap
@@ -304,5 +304,5 @@ if (window.innerWidth > 991) {
       },
     })
     .fromTo(".joy_img", { y: "20%" }, { y: "-20%", ease: "none" })
-    .fromTo(".joy-of-work", { y: "0%" }, { y: "10%", ease: "none" }, 0);
+    .fromTo(".joy-of-work", { y: "0%" }, { y: "20%", ease: "none" }, 0);
 }
