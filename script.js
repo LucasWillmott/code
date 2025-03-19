@@ -1,3 +1,4 @@
+/*
 if (document.querySelector("[container]")) {
   if (window.innerWidth > 991) {
     gsap.utils.toArray("[container]").forEach((el) => {
@@ -18,6 +19,7 @@ if (document.querySelector("[container]")) {
     });
   }
 }
+  */
 
 // Video Slider
 if (document.querySelector(".c-testimonials_modal")) {
