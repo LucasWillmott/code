@@ -297,13 +297,12 @@ if (window.innerWidth > 991) {
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: ".joy_img",
-        start: "top bottom",
+        trigger: ".joy-of-work",
+        start: "top center",
         end: "bottom top",
-        scrub: true,
+        scrub: 1.5,
       },
     })
-    .fromTo(".joy_img", { y: "0em" }, { y: "-15em", ease: "none" })
-    .fromTo(".joy-of-work", { y: "0%" }, { y: "10em", ease: "none" }, 0)
-    .fromTo(".joy_words", { y: "0%" }, { y: "5em", ease: "none" }, 0);
+    .fromTo(".joy_img", { y: "0em" }, { y: "-18em", ease: "none" })
+    .fromTo(".joy-of-work", { y: "0%" }, { y: "0em", ease: "none" }, 0);
 }
