@@ -300,13 +300,10 @@ if (window.innerWidth > 991) {
         trigger: ".joy-of-work",
         start: "top center",
         end: "bottom top",
-        scrub: 1.5,
+        scrub: 1.5
+        markers:true,
       },
     })
     .fromTo(".joy_img", { y: "0em" }, { y: "-18em", ease: "none" })
     .fromTo(".joy-of-work", { y: "0%" }, { y: "0em", ease: "none" }, 0);
 }
-
-setTimeout(function () {
-  scrollTrigger.refresh();
-}, 1000);
