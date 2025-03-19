@@ -303,7 +303,7 @@ if (window.innerWidth > 991) {
         scrub: true,
       },
     })
-    .fromTo(".joy_img", { y: "0em" }, { y: "-20em", ease: "none" })
+    .fromTo(".joy_img", { y: "0em" }, { y: "-15em", ease: "none" })
     .fromTo(".joy-of-work", { y: "0%" }, { y: "10em", ease: "none" }, 0)
     .fromTo(".joy_words", { y: "0%" }, { y: "5em", ease: "none" }, 0);
 }
