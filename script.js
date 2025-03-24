@@ -156,7 +156,7 @@ if (document.querySelector(".c-testimonials_modal")) {
 
     setTimeout(function () {
       centerSlider.slideNext();
-    }, 250);
+    }, 500);
 
     $thisSlider.on("click", ".swiper-slide-next", function () {
       centerSlider.slideNext();
